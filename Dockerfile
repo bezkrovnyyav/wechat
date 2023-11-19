@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 COPY ./requirements.txt .
-RUN pip3 install --upgrade pip && \
+RUN pip3 install --upgrade pip3 && \
     pip3 install -r requirements.txt
 
 # copy project files
