@@ -52,8 +52,8 @@ def open_chat(request, uuid):
     if request.user not in group.members.all():
         return HttpResponseForbidden('Not a member. Try another group.')
     messages = group.message_set.all()
-    sorted_messages = sorted(messages, key=lambda x: x.timestamp)
-    return render(request, 'chat.html', context={'messages': sorted_messages, 'uuid': uuid})
+    # sorted_messages = sorted(messages, key=lambda x: x.timestamp)
+    return render(request, 'chat.html', context={'messages': messages, 'uuid': uuid})
 
 
 @login_required
