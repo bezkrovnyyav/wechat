@@ -1,6 +1,8 @@
 # base image
 FROM python:3.7-alpine
 
+RUN apk update && apk add gcc libc-dev
+
 # set work directory
 WORKDIR /usr/src/app
 
@@ -17,8 +19,7 @@ RUN pip3 install --upgrade pip && \
 COPY . .
 
 # run database migrations
-RUN  apk update && apk add gcc libc-dev && \
-    python manage.py migrate members && \
+RUN python manage.py migrate members && \
     python manage.py migrate
 
 # specify the command to run on container start
