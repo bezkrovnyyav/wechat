@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-v%@et)in#0asq2_24cst6*)jp%829hyg1vqn&b5d-+#@nwx2dp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["127.0.0.1:8000", "0.0.0.0:8000", "wechat-85y195m1.b4a.run"]
 
 ASGI_APPLICATION = 'django_chat.asgi.application'
 
