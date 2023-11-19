@@ -1,7 +1,7 @@
 # base image
 FROM python:3.7-alpine
 
-RUN apk update && apk add gcc libc-dev
+RUN apk update && apk add gcc libc-dev && && apk upgrade
 
 # set work directory
 WORKDIR /usr/src/app
@@ -12,8 +12,7 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 COPY ./requirements.txt .
-RUN pip install cffi
-RUN pip3 install --upgrade pip && \
+RUN pip3 install --upgrade pip && pip install cffi && \
     pip3 install -r requirements.txt
 
 # copy project files
