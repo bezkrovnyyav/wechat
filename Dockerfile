@@ -6,6 +6,9 @@ RUN apk update && apk upgrade && apk add gcc libc-dev
 # set work directory
 WORKDIR /usr/src/app
 
+# Django port
+EXPOSE 8000
+
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
