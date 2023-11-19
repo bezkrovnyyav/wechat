@@ -10,11 +10,15 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 COPY ./requirements.txt .
-RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN pip3 install --upgrade pip && \
+    pip3 install -r requirements.txt
 
-# copy project
-COPY . ./
+# copy project files
+COPY . .
 
-# run server
-CMD python manage.py migrate members && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+# run database migrations
+RUN python manage.py migrate members && \
+    python manage.py migrate
+
+# specify the command to run on container start
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
