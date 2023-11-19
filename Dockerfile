@@ -17,7 +17,8 @@ RUN pip3 install --upgrade pip && \
 COPY . .
 
 # run database migrations
-RUN python manage.py migrate members && \
+RUN  apk update && apk add gcc libc-dev && \
+    python manage.py migrate members && \
     python manage.py migrate
 
 # specify the command to run on container start
