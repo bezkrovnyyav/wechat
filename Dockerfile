@@ -1,7 +1,7 @@
 # base image
-FROM python:3.7-alpine
+FROM python:3.10.7-alpine3.16
 
-RUN apk update && apk add gcc libc-dev && && apk upgrade
+RUN apk update && apk upgrade && apk add gcc libc-dev
 
 # set work directory
 WORKDIR /usr/src/app
