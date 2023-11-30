@@ -24,14 +24,22 @@ class JoinAndLeave(WebsocketConsumer):
         user_id = self.scope['user'].user_id
 
         user = Members.objects.get(user_id=user_id)
+        typing_status = user.typing_status
+        print(typing_status)
+        typing_status = True
+        user.save()
         group = Group.objects.get(uuid=self.room_uuid)
+        print(typing_status)
 
         db_insert = Message(author=user,content=message,group=group)
         db_insert.save()
 
         async_to_sync(self.channel_layer.group_send)(
-            self.room_group_name, {'type': 'chat_message', 'message': f'{user.username}: {message}: {createtime}'}
+            self.room_group_name, {'type': 'chat_message', 'message': f'{user.username}: {message}: {createtime}: {typing_status}'}
         )
+
+        typing_status = False
+        user.save()
 
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(
