@@ -3,8 +3,8 @@ from django.http import HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .serializers import GroupSerializer, MessageSerializer
-from .models import Group, Message
+from .serializers import GroupSerializer, MessageSerializer, SupportMessageSerializer
+from .models import Group, Message, SupportMessage
 
 from rest_framework import generics
 
@@ -97,3 +97,13 @@ class MessageList(generics.ListAPIView):
         # Фильтруйте сообщения по ID чата
         queryset = Message.objects.filter(group_id=chat_id)
         return queryset
+
+
+class SupportMessageAPICreateView(generics.ListCreateAPIView):
+    queryset = SupportMessage.objects.all()
+    serializer_class = SupportMessageSerializer
+
+
+class SupportMessageAPIDetailVeiw(generics.RetrieveUpdateDestroyAPIView):
+    queryset = SupportMessage.objects.all()
+    serializer_class = SupportMessageSerializer

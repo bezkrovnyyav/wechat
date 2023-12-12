@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Group, Message
+from .models import Group, Message, SupportMessage
 
 
 class GroupSerializer(serializers.ModelSerializer):
@@ -16,3 +16,9 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = ['author', 'author_id', 'timestamp', 'content', 'group']
+
+
+class SupportMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SupportMessage
+        fields = ['id', 'author_name', 'author_email', 'timecreate', 'content']

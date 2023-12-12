@@ -17,7 +17,10 @@ urlpatterns = [
     # message serializer
 	path('api/messages/', views.MessageAPICreateView.as_view(), name='create_message'),
     path('api/messages/<int:pk>/', views.MessageAPIDetailVeiw.as_view(), name='update_message'),
-    path('api/chats/<int:chat_id>/messages', views.MessageList.as_view(), name='message-list'),
+    path('api/chats/<int:chat_id>/messages', views.MessageList.as_view(), name='message_list'),
+    # support message serializer
+	path('api/support/', views.SupportMessageAPICreateView.as_view(), name='create_supp_mess'),
+    path('api/support/<int:pk>/', views.SupportMessageAPIDetailVeiw.as_view(), name='update_supp_mess'),
 
 ]
 

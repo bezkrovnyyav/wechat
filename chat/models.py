@@ -14,12 +14,12 @@ class Group(models.Model):
 	def __str__(self):
 		return self.chatname
 
-	def add_user(self, request, user):
+	def add_user(self, user):
 		self.members.add(user)
 		self.save()
 		return
 
-	def remove_user(self, request, user):
+	def remove_user(self, user):
 		self.members.remove(user)
 		self.save()
 		return
@@ -33,3 +33,13 @@ class Message(models.Model):
 
 	def __str__(self):
 		return self.author.username 
+
+
+class SupportMessage(models.Model):
+	author_name = models.CharField(max_length=255, default="User")
+	author_email = models.EmailField(max_length=50, unique=False)
+	timecreate = models.DateTimeField(auto_now_add=True)
+	content = models.TextField()
+
+	def __str__(self):
+		return self.author_name
