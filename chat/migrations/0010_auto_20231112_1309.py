@@ -11,6 +11,10 @@ def add_chats(apps, schema_editor):
     Chat.objects.get_or_create(chatname='Sport')
     Chat.objects.get_or_create(chatname='Games')
     Chat.objects.get_or_create(chatname='Films')
+    Chat.objects.get_or_create(chatname='Travel')
+    Chat.objects.get_or_create(chatname='Music')
+    Chat.objects.get_or_create(chatname='Education')
+    Chat.objects.get_or_create(chatname='Cooking')
 
 
 class Migration(migrations.Migration):
